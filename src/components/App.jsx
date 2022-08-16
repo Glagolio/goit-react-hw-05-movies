@@ -1,16 +1,14 @@
+import SharedLayout from './SharedLayout/SharedLayout';
+import { Route, Routes, BrowserRouter } from 'react-router-dom';
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<div>Home</div>} />
+          <Route path="/movies" element={<div>Movies</div>} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
