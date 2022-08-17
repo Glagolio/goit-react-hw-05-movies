@@ -1,6 +1,7 @@
 import LoadMoreButton from 'components/LoadMoreButton/LoadMoreButton';
 import { useState, useEffect } from 'react';
 import { getTrendsOfMovies } from '../../services/getMovies';
+import { Link } from 'react-router-dom';
 
 const MoviesGallery = () => {
   const [movies, setMovies] = useState([]);
@@ -23,7 +24,11 @@ const MoviesGallery = () => {
       <ul>
         {movies.map(movie => {
           const { title, id } = movie;
-          return <li key={id}>{title}</li>;
+          return (
+            <li key={id}>
+              <Link to={`movies/${id}`}>{title}</Link>
+            </li>
+          );
         })}
       </ul>
       <LoadMoreButton

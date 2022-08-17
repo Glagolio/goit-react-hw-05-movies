@@ -10,3 +10,10 @@ export const getTrendsOfMovies = async page => {
   );
   return response.data;
 };
+
+export const getMovieInfo = async id => {
+  const response = await axios.get(
+    `/movie/${id}?api_key=${KEY}&language=en-US`
+  );
+  return response;
+};

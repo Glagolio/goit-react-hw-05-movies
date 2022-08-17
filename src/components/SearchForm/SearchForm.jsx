@@ -1,0 +1,32 @@
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
+
+const searchSchema = Yup.object().shape({
+  searchMovie: Yup.string()
+    .min(2, 'Too Short!')
+    .max(20, 'Too Long')
+    .required('Required'),
+});
+
+const SearchForm = ({ onSubmit }) => {
+  return (
+    <Formik
+      initialValues={{ searchMovie: '' }}
+      onSubmit={onSubmit}
+      validatorSchema={searchSchema}
+    >
+      {({ errors, touched }) => (
+        <Form>
+          <Field name="searchMovie">
+            {errors.searchMovie && touched.searchMovie ? (
+              <div>{errors.searchMovie}</div>
+            ) : null}
+          </Field>
+          <button type="submit">Search</button>
+        </Form>
+      )}
+    </Formik>
+  );
+};
+
+export default SearchForm;
