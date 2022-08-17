@@ -1,7 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { getMovieCredits } from '../../services/getMovies';
 import { useState, useEffect } from 'react';
-import { TailSpin } from 'react-loader-spinner';
 
 const Cast = () => {
   const { movieId } = useParams();
