@@ -1,7 +1,8 @@
 import { getMovieInfo } from '../services/getMovies';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
+import { Link } from 'react-router-dom';
 
 const MovieInfo = () => {
   const [movie, setMovie] = useState({});
@@ -12,9 +13,8 @@ const MovieInfo = () => {
     getMovieInfo(movieId).then(result => {
       setMovie(result.data);
       setIsLoad(true);
-      console.log(movie);
     });
-  }, []);
+  }, [movieId]);
   const { title, poster_path, release_date, popularity, overview, genres } =
     movie;
   const imageURL = `https://image.tmdb.org/t/p/w500${poster_path}`;
@@ -23,7 +23,7 @@ const MovieInfo = () => {
     <div>
       {isLoad ? (
         <>
-          <img src={imageURL} />
+          <img src={imageURL} width="400" />
 
           <div>
             <h1>
@@ -37,6 +37,17 @@ const MovieInfo = () => {
               return <p key={genre.id}>{genre.name}</p>;
             })}
           </div>
+          <hr />
+          <p>Additional information</p>
+          <ul>
+            <li>
+              <Link to="cast">Cast</Link>
+            </li>
+            <li>
+              <Link to="reviews">Reviews</Link>
+            </li>
+          </ul>
+          <hr />
         </>
       ) : (
         <TailSpin
@@ -50,6 +61,7 @@ const MovieInfo = () => {
           visible={true}
         />
       )}
+      <Outlet />
     </div>
   );
 };
