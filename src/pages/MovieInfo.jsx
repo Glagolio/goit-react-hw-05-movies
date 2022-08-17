@@ -21,8 +21,23 @@ const MovieInfo = () => {
   const releaseYear = new Date(release_date).getFullYear();
   return (
     <div>
-      {poster_path ? (
-        <img src={imageURL} />
+      {isLoad ? (
+        <>
+          <img src={imageURL} />
+
+          <div>
+            <h1>
+              {title} ({releaseYear})
+            </h1>
+            <h2>Popularity: {Math.round(popularity)} </h2>
+            <h2>Overview</h2>
+            <p>{overview}</p>
+            <h2>Genres</h2>
+            {genres.map(genre => {
+              return <p key={genre.id}>{genre.name}</p>;
+            })}
+          </div>
+        </>
       ) : (
         <TailSpin
           height="80"
@@ -35,22 +50,6 @@ const MovieInfo = () => {
           visible={true}
         />
       )}
-      <div>
-        <h1>
-          {title} ({releaseYear})
-        </h1>
-        <h2>Popularity: {Math.round(popularity)} </h2>
-        <h2>Overview</h2>
-        <p>{overview}</p>
-        <h2>Genres</h2>
-        
-          {isLoad && ({
-            genres.map(genre => {
-              return <p key={genre.id}>{genre.name}</p>;
-            })
-          })}
-      
-      </div>
     </div>
   );
 };
