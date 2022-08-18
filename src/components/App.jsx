@@ -1,9 +1,3 @@
-// import SharedLayout from './SharedLayout/SharedLayout';
-// import Home from 'pages/Home';
-// import Movies from 'pages/Movies';
-// import MovieInfo from '../pages/MovieDetails';
-// import Cast from './Cast/Cast';
-// import Reviews from './Reviews/Reviews';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { lazy } from 'react';
 
