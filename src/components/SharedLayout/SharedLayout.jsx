@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { Container, Header, Link } from './SharedLayout.styled';
 import { Suspense } from 'react';
+import { TailSpin } from 'react-loader-spinner';
 
 const SharedLayout = () => {
   return (
@@ -11,7 +12,20 @@ const SharedLayout = () => {
           <Link to="/movies">Movies</Link>
         </nav>
       </Header>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <TailSpin
+            height="80"
+            width="80"
+            color="#000"
+            ariaLabel="tail-spin-loading"
+            radius="1"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+          />
+        }
+      >
         <Outlet />
       </Suspense>
     </Container>
