@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const HomeGalleryList = ({ movies, state }) => {
   return (
@@ -18,3 +19,9 @@ const HomeGalleryList = ({ movies, state }) => {
 };
 
 export default HomeGalleryList;
+
+HomeGalleryList.propType = {
+  state: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+};
