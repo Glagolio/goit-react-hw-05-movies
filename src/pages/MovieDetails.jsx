@@ -1,9 +1,10 @@
-import MovieInfoItemStyled from 'components/MovieInfoItem/MovieInfoItem.styled';
+import { MovieInfoItemStyled } from 'components/MovieInfoItem/MovieInfoItem.styled';
 import { getMovieInfo } from '../services/getMovies';
 import { useState, useEffect } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
+import { IoArrowBack } from 'react-icons/io5';
 
 const MovieInfo = () => {
   const [movie, setMovie] = useState({});
@@ -11,8 +12,7 @@ const MovieInfo = () => {
   const { movieId } = useParams();
 
   const location = useLocation();
-  const backLink = location.state?.from ?? '/movies';
-  console.log(backLink);
+  const backLink = location.state?.from ?? '/';
 
   useEffect(() => {
     getMovieInfo(movieId).then(result => {
@@ -28,10 +28,12 @@ const MovieInfo = () => {
     <div>
       {isLoad ? (
         <>
-          <Link to={backLink}>Back</Link>
+          <Link to={backLink}>
+            <IoArrowBack size="10" />
+            Back
+          </Link>
           <MovieInfoItemStyled>
             <img src={imageURL} width="300" alt={title} />
-
             <div>
               <h1>
                 {title} ({releaseYear})

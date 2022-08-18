@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-const MovieInfoItemStyled = styled.div`
+export const MovieInfoItemStyled = styled.div`
   display: flex;
   gap: 10px;
 
@@ -8,5 +8,3 @@ const MovieInfoItemStyled = styled.div`
     max-width: 400px;
   }
 `;
-
-export default MovieInfoItemStyled;
