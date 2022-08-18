@@ -11,7 +11,7 @@ const MovieInfo = () => {
   const { movieId } = useParams();
 
   const location = useLocation();
-  const backLink = location.state?.from;
+  const backLink = location.state?.from ?? '/movies';
   console.log(backLink);
 
   useEffect(() => {
@@ -49,10 +49,14 @@ const MovieInfo = () => {
           <p>Additional information</p>
           <ul>
             <li>
-              <Link to="cast">Cast</Link>
+              <Link to="cast" state={{ from: backLink }}>
+                Cast
+              </Link>
             </li>
             <li>
-              <Link to="reviews">Reviews</Link>
+              <Link to="reviews" state={{ from: backLink }}>
+                Reviews
+              </Link>
             </li>
           </ul>
           <hr />

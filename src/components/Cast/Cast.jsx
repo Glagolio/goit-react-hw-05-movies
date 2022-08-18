@@ -23,7 +23,9 @@ const Cast = () => {
               const imageURL = `https://image.tmdb.org/t/p/w500${profile_path}`;
               return (
                 <li key={id}>
-                  {profile_path && <img src={imageURL} width="100" />}
+                  {profile_path && (
+                    <img src={imageURL} width="100" alt={name} />
+                  )}
                   <p>Name: {name}</p>
                   <p>Character: {character}</p>
                 </li>
