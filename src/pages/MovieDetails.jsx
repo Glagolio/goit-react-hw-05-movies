@@ -1,3 +1,4 @@
+import MovieInfoItemStyled from 'components/MovieInfoItem/MovieInfoItem.styled';
 import { getMovieInfo } from '../services/getMovies';
 import { useState, useEffect } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
@@ -28,20 +29,22 @@ const MovieInfo = () => {
       {isLoad ? (
         <>
           <Link to={backLink}>Back</Link>
-          <img src={imageURL} width="400" alt={title} />
+          <MovieInfoItemStyled>
+            <img src={imageURL} width="300" alt={title} />
 
-          <div>
-            <h1>
-              {title} ({releaseYear})
-            </h1>
-            <h2>Popularity: {Math.round(popularity)} </h2>
-            <h2>Overview</h2>
-            <p>{overview}</p>
-            <h2>Genres</h2>
-            {genres.map(genre => {
-              return <p key={genre.id}>{genre.name}</p>;
-            })}
-          </div>
+            <div>
+              <h1>
+                {title} ({releaseYear})
+              </h1>
+              <h2>Popularity: {Math.round(popularity)} </h2>
+              <h2>Overview</h2>
+              <p>{overview}</p>
+              <h2>Genres</h2>
+              {genres.map(genre => {
+                return <p key={genre.id}>{genre.name}</p>;
+              })}
+            </div>
+          </MovieInfoItemStyled>
           <hr />
           <p>Additional information</p>
           <ul>
