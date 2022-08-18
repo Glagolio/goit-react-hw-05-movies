@@ -31,3 +31,10 @@ export const getMovieCredits = async id => {
   );
   return response.data.cast;
 };
+
+export const getSearchQuery = async (page, query) => {
+  const response = await axios.get(
+    `search/movie?api_key=${KEY}&query=${query}&page=${page}`
+  );
+  return response.data;
+};

@@ -29,4 +29,25 @@ const SearchForm = ({ onSubmit }) => {
   );
 };
 
+// const SearchForm = ({ onSubmit }) => {
+//   const [value, setValue] = useState('');
+
+//   const handleChangeForm = e => {
+//     setValue(e.currentTarget.value);
+//   };
+
+//   const handleSubmitForm = e => {
+//     e.preventDefault();
+//     onSubmit(value);
+//   };
+//   return (
+//     <form onSubmit={handleSubmitForm}>
+//       <label>
+//         <input type="text" onChange={handleChangeForm} value={value} />
+//         <button type="submit">Search</button>
+//       </label>
+//     </form>
+//   );
+// };
+
 export default SearchForm;

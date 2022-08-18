@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-import { getMovieCredits } from '../../services/getMovies';
 import { useState, useEffect } from 'react';
 import { getMovieReviews } from '../../services/getMovies';
 
@@ -21,7 +20,9 @@ const Reviews = () => {
 
               return (
                 <li key={id}>
-                  <p>{author}</p>
+                  <p>
+                    <b>{author}</b>
+                  </p>
                   <p>{content}</p>
                 </li>
               );

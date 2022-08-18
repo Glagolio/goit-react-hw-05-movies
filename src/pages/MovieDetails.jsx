@@ -1,6 +1,6 @@
 import { getMovieInfo } from '../services/getMovies';
 import { useState, useEffect } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,10 @@ const MovieInfo = () => {
   const [movie, setMovie] = useState({});
   const [isLoad, setIsLoad] = useState(false);
   const { movieId } = useParams();
+
+  const location = useLocation();
+  const backLink = location.state?.from;
+  console.log(backLink);
 
   useEffect(() => {
     getMovieInfo(movieId).then(result => {
@@ -23,7 +27,8 @@ const MovieInfo = () => {
     <div>
       {isLoad ? (
         <>
-          <img src={imageURL} width="400" />
+          <Link to={backLink}>Back</Link>
+          <img src={imageURL} width="400" alt={title} />
 
           <div>
             <h1>

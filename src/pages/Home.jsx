@@ -1,7 +1,7 @@
-import MoviesGallery from "components/MoviesGallery/MovieGallery";
+import MoviesGallery from 'components/MoviesGallery/MovieGallery';
 
 const Home = () => {
-    return <MoviesGallery />
-}
+  return <MoviesGallery />;
+};
 
-export default Home
+export default Home;
